@@ -1,30 +1,47 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="common-layout">
+    <!--布局容器-->
+    <el-container>
+      <!--左侧-->
+      <el-aside class="aside">
+        <logo />
+        <Avatar />
+        <Menu />
+      </el-aside>
+      <!--右侧-->
+      <el-main class="main">
+        <!--路由-->
+        <router-view />
+      </el-main>
+    </el-container>
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import Logo from "./components/logo"
+import Avatar from "./components/avatar"
+import Menu from "./components/menu"
+
+export default {
+  components: { Menu, Avatar, Logo },
+  setup() {
+
+
+    return {}
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.aside {
+  width: 200px;
+  height: 100Vh;
 }
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.main {
+  width: calc(100% - 200px);
+  height: 100Vh;
+  overflow: hidden;
+  background-color: #f4f5f7;
 }
 </style>
